@@ -1,0 +1,53 @@
+.Navbar{
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 5rem 1rem 5rem;
+    a{
+        text-decoration: none;
+        color: black;
+        font-weight: 100;
+    }
+    &__top{
+        display: flex;
+        gap: 2rem;
+        #carohive{
+            color: #F7B801;
+            font-weight: 500;
+        }
+        &__caroHive{
+            
+        }
+        &__search{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            &__input{
+                border: none;
+                padding: 2px;
+                &:focus{
+                    outline: 1px solid rgb(205, 204, 204);
+                    outline-offset: 2px;
+                    border-radius: 5px;
+                }
+            }
+        }
+
+    }
+    &__bottom{
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        &__cart{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            &__bag{
+                svg{
+                    padding-top: 3px;
+                }
+            }
+        }
+    }
+}
