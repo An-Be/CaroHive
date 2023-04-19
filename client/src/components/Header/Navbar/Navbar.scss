@@ -1,0 +1,46 @@
+//DaisyUI theme colors
+$primary: #efbf2f;
+$secondary: #462ded;
+$accent: #768cd3;
+$neutral: #261e38;
+$base: #ffff;
+$info: #0e7cf1;
+$success: #3cddba;
+$warning: #f6950e;
+$error: #fa5287;
+
+.Navbar {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5rem 1rem 5rem;
+  a {
+    text-decoration: none;
+    color: black;
+    font-weight: 100;
+  }
+  &__top {
+    display: flex;
+    gap: 2rem;
+    #carohive {
+      color: $primary;
+      font-weight: 500;
+    }
+  }
+  &__bottom {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    &__cart {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      &__bag {
+        svg {
+          fill: $primary;
+        }
+      }
+    }
+  }
+}
