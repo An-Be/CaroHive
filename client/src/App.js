@@ -11,6 +11,7 @@ function App() {
     if(location.pathname === "/"){
       navigate("/home")
     }
+    // eslint-disable-next-line
   },[location.pathname])
 
   return (
