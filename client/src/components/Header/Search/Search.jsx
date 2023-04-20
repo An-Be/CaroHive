@@ -21,11 +21,11 @@ const Search = ({ searchBarOpen, setSearchBarOpen }) => {
               placeholder="Search…"
               className="input input-bordered"
             />
-            <button className="btn btn-square">
+            <button className="btn btn-square btn-primary">
               <HiOutlineSearch />
             </button>
           </div>
-          <motion.div whileHover={{ scale: 1.3 }} whileTap={{ scale: 0.9 }}>
+          <motion.div style={{color:'white'}} whileHover={{ scale: 1.3 }} whileTap={{ scale: 0.9 }}>
           <AiOutlineClose className="Search__form__close" onClick={() => setSearchBarOpen(!searchBarOpen)}/>
           </motion.div>
         </div>
