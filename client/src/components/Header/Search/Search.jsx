@@ -1,16 +1,35 @@
 import React from "react";
 import { HiOutlineSearch } from "react-icons/hi";
-import './Search.scss';
+import { AiOutlineClose } from "react-icons/ai";
+import "./Search.scss";
+import { motion } from "framer-motion";
 
-const Search = () => {
+const Search = ({ searchBarOpen, setSearchBarOpen }) => {
+  const isIconDisplaying = (searchBarOpen) => {
+    return searchBarOpen ? {'display' : 'none'} : {};
+  }
   return (
     <div className="Search">
-      <HiOutlineSearch/>
-      <input
-        type="text"
-        placeholder="Search"
-        className="input input-bordered input-xs input-primary w-full max-w-xs"
-      />
+      <motion.div style={{color:'white'}}whileHover={{ scale: 1.3 }} whileTap={{ scale: 0.9 }}>
+        <HiOutlineSearch className="Search__searchIcon" style={isIconDisplaying(searchBarOpen)} onClick={() => setSearchBarOpen(!searchBarOpen)} />
+      </motion.div>
+      {searchBarOpen && (
+        <div className="Search__form form-control">
+          <div className="input-group">
+            <input
+              type="text"
+              placeholder="Search…"
+              className="input input-bordered"
+            />
+            <button className="btn btn-square">
+              <HiOutlineSearch />
+            </button>
+          </div>
+          <motion.div whileHover={{ scale: 1.3 }} whileTap={{ scale: 0.9 }}>
+          <AiOutlineClose className="Search__form__close" onClick={() => setSearchBarOpen(!searchBarOpen)}/>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 };

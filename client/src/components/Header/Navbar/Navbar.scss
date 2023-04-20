@@ -10,13 +10,14 @@ $warning: #f6950e;
 $error: #fa5287;
 
 .Navbar {
-  font-family: "Roboto", sans-serif;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 5rem 1rem 5rem;
+  position: fixed;
   a {
     font-weight: 100;
+    color: white;
   }
   &__top {
     display: flex;
@@ -35,9 +36,8 @@ $error: #fa5287;
       align-items: center;
       gap: 5px;
       &__bag {
-        svg {
-          fill: $primary;
-        }
+        display: flex;
+        align-items: center;
       }
     }
   }

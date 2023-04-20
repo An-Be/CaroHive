@@ -2,6 +2,7 @@ import React from "react";
 import "./Hero.scss";
 import { HERO } from "./HeroData";
 
+
 const Hero = () => {
 
   return (

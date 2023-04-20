@@ -2,7 +2,7 @@ export const HERO = [
     {
       id: 1,
       img: "/images/hero/hero-one.png",
-      title: "Explore the Hive",
+      title: "Explore",
       subtitle:
         "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumend excepturi exercitationem quasi. In deleniti eaque aut repudiandae eta id nisi.",
       btnText: "Explore",
@@ -26,7 +26,7 @@ export const HERO = [
     {
       id: 4,
       img: "/images/hero/hero-four.png",
-      title: "Join the Hive",
+      title: "Join Caro Hive",
       subtitle:
         "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumend excepturi exercitationem quasi. In deleniti eaque aut repudiandae eta id nisi.",
       btnText: "Get Started",
