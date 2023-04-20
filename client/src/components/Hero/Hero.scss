@@ -1,3 +1,11 @@
-.Hero{
-    //background-image: url(../../images/hero/hero-one.png);
+.Hero-Container{
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height:100vh;
+
+    .Hero{
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        height:100vh;
+    }
 }
