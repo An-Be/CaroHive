@@ -20,6 +20,9 @@
     height: 20px;
     &__close{
       width: 30px;
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
 }
