@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header/>
       <hr />
       <Outlet />
       <Footer />
