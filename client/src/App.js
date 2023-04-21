@@ -1,8 +1,8 @@
 import './App.scss';
-import { Navbar } from './components/Header/Navbar/Navbar';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react';
-import Banner from './components/Header/Banner/Banner';
+import Header from './components/Header';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const location = useLocation();
@@ -17,10 +17,10 @@ function App() {
 
   return (
     <div className="App">
-      <Banner />
-      <Navbar />
+      <Header />
       <hr />
       <Outlet />
+      <Footer />
     </div>
   );
 }

@@ -6,8 +6,11 @@ import { motion } from "framer-motion";
 
 const Search = ({ searchBarOpen, setSearchBarOpen }) => {
   const isIconDisplaying = (searchBarOpen) => {
+    console.log(searchBarOpen)
     return searchBarOpen ? {'display' : 'none'} : {};
+
   }
+  
   return (
     <div className="Search">
       <motion.div style={{color:'white'}}whileHover={{ scale: 1.3 }} whileTap={{ scale: 0.9 }}>
@@ -26,7 +29,7 @@ const Search = ({ searchBarOpen, setSearchBarOpen }) => {
             </button>
           </div>
           <motion.div style={{color:'white'}} whileHover={{ scale: 1.3 }} whileTap={{ scale: 0.9 }}>
-          <AiOutlineClose className="Search__form__close" onClick={() => setSearchBarOpen(!searchBarOpen)}/>
+          <AiOutlineClose className="Search__form__close" onClick={() => setSearchBarOpen(false)}/>
           </motion.div>
         </div>
       )}
