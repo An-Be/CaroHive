@@ -4,7 +4,7 @@ export const HERO = [
       img: "/images/hero/hero-one.png",
       title: "Explore",
       subtitle:
-        "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumend excepturi exercitationem quasi. In deleniti eaque aut repudiandae eta id nisi.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       btnText: "Explore",
     },
     {
@@ -12,7 +12,7 @@ export const HERO = [
       img: "/images/hero/hero-two.png",
       title: "New Arrivals",
       subtitle:
-        "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumend excepturi exercitationem quasi. In deleniti eaque aut repudiandae eta id nisi.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       btnText: "Check out what's new",
     },
     {
@@ -20,7 +20,7 @@ export const HERO = [
       img: "/images/hero/hero-three.png",
       title: "Upgrade your wardrobe",
       subtitle:
-        "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumend excepturi exercitationem quasi. In deleniti eaque aut repudiandae eta id nisi.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       btnText: "Shop",
     },
     {
@@ -28,7 +28,7 @@ export const HERO = [
       img: "/images/hero/hero-four.png",
       title: "Join Caro Hive",
       subtitle:
-        "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumend excepturi exercitationem quasi. In deleniti eaque aut repudiandae eta id nisi.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       btnText: "Get Started",
     },
   ];
