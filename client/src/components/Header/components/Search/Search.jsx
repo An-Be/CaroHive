@@ -4,17 +4,28 @@ import { AiOutlineClose } from "react-icons/ai";
 import "./Search.scss";
 import { motion } from "framer-motion";
 
-const Search = ({ searchBarOpen, setSearchBarOpen }) => {
+const Search = ({
+  searchBarOpen,
+  setSearchBarOpen,
+  navBarTransparentClass,
+}) => {
   const isIconDisplaying = (searchBarOpen) => {
-    console.log(searchBarOpen)
-    return searchBarOpen ? {'display' : 'none'} : {};
+    console.log(searchBarOpen);
+    return searchBarOpen ? { display: "none" } : {};
+  };
 
-  }
-  
   return (
     <div className="Search">
-      <motion.div style={{color:'white'}}whileHover={{ scale: 1.3 }} whileTap={{ scale: 0.9 }}>
-        <HiOutlineSearch className="Search__searchIcon" style={isIconDisplaying(searchBarOpen)} onClick={() => setSearchBarOpen(!searchBarOpen)} />
+      <motion.div
+        className={`Search__iconContainer ${navBarTransparentClass}`}
+        whileHover={{ scale: 1.3 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <HiOutlineSearch
+          className="Search__iconContainer__searchIcon"
+          style={isIconDisplaying(searchBarOpen)}
+          onClick={() => setSearchBarOpen(!searchBarOpen)}
+        />
       </motion.div>
       {searchBarOpen && (
         <div className="Search__form form-control">
@@ -28,8 +39,15 @@ const Search = ({ searchBarOpen, setSearchBarOpen }) => {
               <HiOutlineSearch />
             </button>
           </div>
-          <motion.div style={{color:'white'}} whileHover={{ scale: 1.3 }} whileTap={{ scale: 0.9 }}>
-          <AiOutlineClose className="Search__form__close" onClick={() => setSearchBarOpen(false)}/>
+          <motion.div
+            className={`Search__form__closeContainer ${navBarTransparentClass}`}
+            whileHover={{ scale: 1.3 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <AiOutlineClose
+              className="Search__form__close"
+              onClick={() => setSearchBarOpen(false)}
+            />
           </motion.div>
         </div>
       )}
