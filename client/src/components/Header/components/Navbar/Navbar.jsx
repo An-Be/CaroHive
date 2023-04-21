@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { IoMdLogIn } from "react-icons/io";
 import "./Navbar.scss";
@@ -36,6 +36,7 @@ export const Navbar = () => {
         <Search
           setSearchBarOpen={setSearchBarOpen}
           searchBarOpen={searchBarOpen}
+          navBarTransparentClass={navBarTransparentClass}
         />
         <motion.div
           whileHover={{ scale: 1.3 }}

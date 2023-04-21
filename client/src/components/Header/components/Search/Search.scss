@@ -2,26 +2,35 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
-  &__searchIcon{
-    svg {
-      width: 20px;
-    
+  &__iconContainer {
+    &.transparent {
+      color: white;
+    }
+    &__searchIcon {
+      svg {
+        width: 20px;
+      }
     }
   }
 
-  &__form{
+  &__form {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 1rem;
     height: 20px;
-    &__close{
-      width: 30px;
-      &:hover{
-        cursor: pointer;
+    &__closeContainer {
+      &.transparent {
+        color: white;
+      }
+      &__close {
+        width: 30px;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
