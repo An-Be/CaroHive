@@ -1,0 +1,8 @@
+.Banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__header{
+        padding-right: 2px;
+    }
+}

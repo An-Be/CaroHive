@@ -2,6 +2,7 @@ import './App.scss';
 import { Navbar } from './components/Header/Navbar/Navbar';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react';
+import Banner from './components/Header/Banner/Banner';
 
 function App() {
   const location = useLocation();
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div className="App">
+      <Banner />
       <Navbar />
       <hr />
       <Outlet />
