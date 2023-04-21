@@ -14,11 +14,22 @@ $error: #fa5287;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 5rem 1rem 5rem;
-  position: fixed;
-  a {
-    font-weight: 100;
-    color: white;
+  &.transparent{
+    background-color: transparent;
+    position: fixed;
+    a {
+      font-weight: 100;
+      color: white;
+    }
   }
+  &.notTransparent{
+    background-color: white;
+    a {
+      font-weight: 100;
+      color: black;
+    }
+  }
+
   &__top {
     display: flex;
     gap: 2rem;

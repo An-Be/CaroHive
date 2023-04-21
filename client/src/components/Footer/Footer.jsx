@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="footer text-base-content p-10">
       <div className="flex items-center flex-col">
-        <img className="footer-image" src="/images/footer/logo.png"/>
+        <img className="footer-image" src="/images/footer/logo.png" alt='logo'/>
         <span className="text-primary">Caro Hive</span>
       </div>
       <div>
