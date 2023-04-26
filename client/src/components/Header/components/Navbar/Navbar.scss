@@ -14,7 +14,7 @@ $error: #fa5287;
   align-items: center;
   justify-content: space-between;
   padding: 1rem 5rem 1rem 5rem;
-  &.transparent{
+  &.transparent {
     background-color: transparent;
     position: fixed;
     a {
@@ -22,7 +22,7 @@ $error: #fa5287;
       color: white;
     }
   }
-  &.notTransparent{
+  &.notTransparent {
     background-color: white;
     a {
       font-weight: 100;
@@ -42,6 +42,16 @@ $error: #fa5287;
     display: flex;
     align-items: center;
     gap: 2rem;
+    &__dropdown {
+      &__icon {
+        &.transparent {
+          color: white;
+        }
+        svg {
+          width: 16px;
+        }
+      }
+    }
     &__cart {
       display: flex;
       align-items: center;
@@ -50,6 +60,11 @@ $error: #fa5287;
         display: flex;
         align-items: center;
       }
+    }
+  }
+  .menu-compact{
+    &.transparent li a{
+      color:black;
     }
   }
 }
