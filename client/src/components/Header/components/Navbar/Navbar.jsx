@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HiOutlineShoppingBag } from "react-icons/hi";
+import { HiOutlineShoppingBag, HiOutlineMenuAlt1 } from "react-icons/hi";
 import { IoMdLogIn } from "react-icons/io";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
@@ -10,29 +10,48 @@ import { useHeader } from "../../hooks/useHeader";
 export const Navbar = () => {
   const [searchBarOpen, setSearchBarOpen] = useState(false);
 
-  const {navBarTransparentClass}  = useHeader();
-
+  const { navBarTransparentClass } = useHeader();
 
   return (
-    <div
-      className={`Navbar navbar ${navBarTransparentClass}`}
-    >
+    <div className={`Navbar navbar  ${navBarTransparentClass}`}>
       <div className="Navbar__top">
         <Link className="Navbar__top__caroHive" id="carohive" to="/">
           Caro Hive
         </Link>
-        <Link className="Navbar__top__women" to="/shop">
+        <Link className="Navbar__top__women hidden lg:flex" to="/shop">
           Women
         </Link>
-        <Link className="Navbar__top__men" to="/shop">
+        <Link className="Navbar__top__men hidden lg:flex" to="/shop">
           Men
         </Link>
-        <Link className="Navbar__top__about" to="/about">
+        <Link className="Navbar__top__about hidden lg:flex" to="/about">
           About
         </Link>
       </div>
-      <div></div>
+
       <div className="Navbar__bottom">
+        <div className="Navbar__bottom__dropdown dropdown">
+          <label
+            tabIndex={0}
+            className={`btn Navbar__bottom__dropdown__icon ${navBarTransparentClass} btn-ghost lg:hidden`}
+          >
+            <HiOutlineMenuAlt1 />
+          </label>
+          <ul
+            tabIndex={0}
+            className={`menu ${navBarTransparentClass} menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52`}
+          >
+            <li>
+              <Link to="/shop">Women</Link>
+            </li>
+            <li>
+              <Link to="/shop">Men</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+          </ul>
+        </div>
         <Search
           setSearchBarOpen={setSearchBarOpen}
           searchBarOpen={searchBarOpen}
