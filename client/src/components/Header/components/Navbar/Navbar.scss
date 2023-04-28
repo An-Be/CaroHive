@@ -1,0 +1,70 @@
+//DaisyUI theme colors
+$primary: #efbf2f;
+$secondary: #462ded;
+$accent: #768cd3;
+$neutral: #261e38;
+$base: #ffff;
+$info: #0e7cf1;
+$success: #3cddba;
+$warning: #f6950e;
+$error: #fa5287;
+
+.Navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 5rem 1rem 5rem;
+  &.transparent {
+    background-color: transparent;
+    position: fixed;
+    a {
+      font-weight: 100;
+      color: white;
+    }
+  }
+  &.notTransparent {
+    background-color: white;
+    a {
+      font-weight: 100;
+      color: black;
+    }
+  }
+
+  &__top {
+    display: flex;
+    gap: 2rem;
+    #carohive {
+      color: $primary;
+      font-weight: 500;
+    }
+  }
+  &__bottom {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    &__dropdown {
+      &__icon {
+        &.transparent {
+          color: white;
+        }
+        svg {
+          width: 16px;
+        }
+      }
+    }
+    &__cart {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      &__bag {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  .menu-compact{
+    &.transparent li a{
+      color:black;
+    }
+  }
+}
