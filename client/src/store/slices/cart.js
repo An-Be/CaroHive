@@ -11,8 +11,6 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers:{
-        //need to change this to not use amount within products
-        //amount will not be part of DB
         getCardTotal : (state) => {
             const { totalAmount, totalCount } = state.products.reduce((cartTotal, cartItem) => {
                 const {price, amount } = cartItem;
@@ -33,13 +31,16 @@ export const cartSlice = createSlice({
                 return product;
             });
         },
-        removeItem: (state, action) => {
+        removeProduct: (state, action) => {
             state.products = state.products.filter((product) => {
                 return product.id !== action.payload.id
             })
+        },
+        clearCart: (state) => {
+            state.products = []
         }
     }
 })
 
-export const { getCardTotal, changeAmount, removeItem } = cartSlice.actions;
+export const { getCardTotal, changeAmount, removeProduct, clearCart } = cartSlice.actions;
 export default cartSlice.reducer;

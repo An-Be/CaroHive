@@ -13,6 +13,11 @@
         flex-direction: column;
         &__products{
             padding-top: 2rem;
+            &__clear{
+                position: relative;
+                left: 30%;
+                margin: 1rem;
+            }
         }
     }
 }
