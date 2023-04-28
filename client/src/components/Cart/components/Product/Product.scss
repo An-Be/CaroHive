@@ -1,0 +1,26 @@
+.Product{
+    display: flex;
+    border-bottom: 1px solid rgb(181, 178, 178);
+    &__image {
+    width: 100px;
+    height: 110px;
+    border: 1px solid rgb(212, 211, 211);
+    margin: 1rem;
+        img{
+        height:100px;
+        margin: auto;
+        }
+    }
+    &__info{
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        row-gap:1rem;
+        &__trash{
+            color: red;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}

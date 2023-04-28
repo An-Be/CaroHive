@@ -1,44 +1,45 @@
 import { createSlice } from "@reduxjs/toolkit";
+import products from "../../products";
 
 const initialState = {
-    totalItems: 0,
-    products: [
-
-    ],
-    price: 0
+    products: products,
+    totalAmount: 0,
+    totalCount: 0
 }
 
 export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers:{
-        incrementTotalItems: (state) => {
-            state.totalItems +=1;
+        //need to change this to not use amount within products
+        //amount will not be part of DB
+        getCardTotal : (state) => {
+            const { totalAmount, totalCount } = state.products.reduce((cartTotal, cartItem) => {
+                const {price, amount } = cartItem;
+                const itemTotal = price * amount;
+                cartTotal.totalAmount += itemTotal;
+                cartTotal.totalCount += amount;
+                return cartTotal;
+            },{totalAmount: 0, totalCount: 0}
+            );
+            state.totalAmount = parseInt(totalAmount.toFixed(2));
+            state.totalCount = totalCount;
         },
-        decrementTotalItems: (state) => {
-            state.totalItems -= 1;
+        changeAmount: (state, action) => {
+            state.products = state.products.map((product) => {
+                if(product.id === action.payload.id){
+                   return {...product, amount: Number(action.payload.value)}
+                }
+                return product;
+            });
         },
-        incrementByMultiple: (state, action) => {
-            state.totalItems += action.payload;
-        },
-        decrementByMultiple: (state, action) => {
-            state.totalItems -= action.payload;
-        },
-        addProduct : (state, action) => {
-            state.products = state.products.push(action.payload);
-        },
-        removeProduct : (state, action) => {
-            // here we want to filter through array find the product to remove
-            state.products = state.products.push(action.payload);
-        }, 
-        incrementTotalPrice: (state, action) => {
-            //incremement price cart according to items added
-        },
-        decremenentTotalPrice: (state, action) => {
-            //decrement price cart according to items added
+        removeItem: (state, action) => {
+            state.products = state.products.filter((product) => {
+                return product.id !== action.payload.id
+            })
         }
     }
 })
 
-export const { incrementTotalItems, decrementTotalItems } = cartSlice.actions;
+export const { getCardTotal, changeAmount, removeItem } = cartSlice.actions;
 export default cartSlice.reducer;
