@@ -18,7 +18,7 @@ const Product = ({
       </div>
       <div className="Product__info">
         <span className="font-bold">{title}</span>
-        <label for="select-amount">Quantity</label>
+        <label htmlFor="select-amount">Quantity</label>
         <select
           id="select-amount"
           className="select select-secondary w-full max-w-xs"
