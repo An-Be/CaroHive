@@ -52,15 +52,6 @@ $error: #fa5287;
         }
       }
     }
-    &__cart {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      &__bag {
-        display: flex;
-        align-items: center;
-      }
-    }
   }
   .menu-compact{
     &.transparent li a{
