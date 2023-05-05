@@ -24,7 +24,7 @@ const Product = ({
           className="select select-secondary w-full max-w-xs"
           onChange={(e) => handleAMountChange(e.target.value, id)}
         >
-          <option selected>1</option>
+          <option defaultValue>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
