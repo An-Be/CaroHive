@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { HiOutlineShoppingBag, HiOutlineMenuAlt1 } from "react-icons/hi";
+import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { IoMdLogIn } from "react-icons/io";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import Search from "../Search/Search";
 import { motion } from "framer-motion";
 import { useHeader } from "../../hooks/useHeader";
+import { CartCount } from "../Cart/CartCount";
 
 export const Navbar = () => {
   const [searchBarOpen, setSearchBarOpen] = useState(false);
@@ -57,16 +58,7 @@ export const Navbar = () => {
           searchBarOpen={searchBarOpen}
           navBarTransparentClass={navBarTransparentClass}
         />
-        <motion.div
-          whileHover={{ scale: 1.3 }}
-          whileTap={{ scale: 0.9 }}
-          className="Navbar__bottom__cart"
-        >
-          <Link className="Navbar__bottom__cart__bag" to="/cart">
-            <HiOutlineShoppingBag />
-            <span className="Navbar__bottom__cart__count">3</span>
-          </Link>
-        </motion.div>
+        <CartCount />
         <Link className="Navbar__bottom__login" to="/login">
           <motion.div whileHover={{ scale: 1.3 }} whileTap={{ scale: 0.9 }}>
             <IoMdLogIn />

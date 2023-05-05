@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Shop } from "../components/Shop/Shop";
 import { About } from "../components/About/About";
-import { Cart } from "../components/Cart/Cart";
+import { Cart } from "../components/Cart";
 import Hero from "../components/Hero/Hero";
 import App from "../App";
 import { LoginPage } from "../components/Login/Index";

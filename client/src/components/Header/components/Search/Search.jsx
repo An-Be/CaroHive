@@ -10,7 +10,6 @@ const Search = ({
   navBarTransparentClass,
 }) => {
   const isIconDisplaying = (searchBarOpen) => {
-    console.log(searchBarOpen);
     return searchBarOpen ? { display: "none" } : {};
   };
 

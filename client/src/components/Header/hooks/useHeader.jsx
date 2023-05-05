@@ -13,12 +13,10 @@ export const useHeader = () => {
   
     useEffect(() => {
       if (location.pathname !== "/home") {
-        console.log("hi");
         setNavbarTransparent(false);
       } else {
         setNavbarTransparent(true);
       }
-      console.log(location.pathname);
     }, [location.pathname]);
 
     return {
