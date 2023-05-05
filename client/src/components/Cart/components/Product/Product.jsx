@@ -11,10 +11,11 @@ const Product = ({
   handleAMountChange,
   handleProductRemoval,
 }) => {
+  console.log(title)
   return (
     <div className="Product">
       <div className="Product__image">
-        <img src={image} alt={title} />
+        <img src={`${process.env.REACT_APP_IMAGE_URL}${image}`} alt={title} />
       </div>
       <div className="Product__info">
         <span className="font-bold">{title}</span>

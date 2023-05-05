@@ -3,7 +3,7 @@ import products from "../../products";
 import coupons from "../../coupons";
 
 const initialState = {
-  products: products,
+  products: [],
   totalAmount: 0,
   totalCount: 0,
   couponUsed: ''
@@ -35,6 +35,18 @@ export const cartSlice = createSlice({
         return product;
       });
     },
+    addProduct: (state, action) => {
+      const index = state.products.findIndex((product) => product.id === action.payload.productToAddToCart.id);
+      if(index >= 0){
+        state.products[index].amount +=1
+        state.totalCount += 1
+      }else{
+        const product = {...action.payload.productToAddToCart, amount: 1}
+        console.log(product)
+        state.products.push(product)
+        state.totalCount += 1
+      }
+    },
     removeProduct: (state, action) => {
       state.products = state.products.filter((product) => {
         return product.id !== action.payload.id;
@@ -60,6 +72,7 @@ export const {
   getCardTotal,
   changeAmount,
   removeProduct,
+  addProduct,
   clearCart,
   applyCoupon,
 } = cartSlice.actions;

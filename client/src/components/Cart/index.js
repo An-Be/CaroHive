@@ -18,6 +18,8 @@ export const Cart = () => {
     dispatch(getCardTotal());
   }, [products]);
 
+  //console.log(products.map(product => product[0].url))
+
   const handleAMountChange = (value, id) => {
     dispatch(changeAmount({ value, id }));
   };
@@ -42,7 +44,7 @@ export const Cart = () => {
                 <Product
                   key={index}
                   id={product.id}
-                  image={product.img}
+                  image={product.url}
                   handleProductRemoval={handleProductRemoval}
                   handleAMountChange={handleAMountChange}
                   index={index}
