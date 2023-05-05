@@ -1,0 +1,20 @@
+.Shop{
+    display: grid;
+    grid-template-areas: "banner banner banner"
+                        "sidebar products products"
+    ;
+    grid-template-columns: 300px 1fr 1fr;
+
+}
+
+.ShopBanner{
+    grid-area: banner;
+}
+.ShopSideBar{
+    grid-area: sidebar;
+
+}
+.ShopProducts{
+    margin: 1rem 1rem 0rem 1rem;
+    grid-area: products;
+}
