@@ -3,7 +3,7 @@ import "./ShopProducts.scss";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../../../store/slices/cart";
 
-const ShopProducts = ({ products }) => {
+const ShopProducts = ({ products, isLoading, error }) => {
   const dispatch = useDispatch();
   const addToCart = (url, title, price, id) => {
     const productToAddToCart = {
@@ -15,11 +15,14 @@ const ShopProducts = ({ products }) => {
     console.log(url)
     dispatch(addProduct({productToAddToCart}))
   }
+  console.log(isLoading)
   return (
     <>
-      {!products ? (
+      {isLoading ? (
         <h1>loading</h1>
-      ) : (
+      ) : error ? (
+        <div>Oh, no there was an error</div>
+      ) : products ? (
         <div className="ShopProducts grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
           {products.map((product, key) => (
             <div className="card bg-base-100 shadow-xl " key={key}>
@@ -42,7 +45,7 @@ const ShopProducts = ({ products }) => {
             </div>
           ))}
         </div>
-      )}
+      ): null}
     </>
   );
 };
