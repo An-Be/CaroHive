@@ -19,10 +19,10 @@ export const Navbar = () => {
         <Link className="Navbar__top__caroHive" id="carohive" to="/">
           Caro Hive
         </Link>
-        <Link className="Navbar__top__women hidden lg:flex" to="/shop">
+        <Link className="Navbar__top__women hidden lg:flex" to="/shop/women">
           Women
         </Link>
-        <Link className="Navbar__top__men hidden lg:flex" to="/shop">
+        <Link className="Navbar__top__men hidden lg:flex" to="/shop/men">
           Men
         </Link>
         <Link className="Navbar__top__about hidden lg:flex" to="/about">
@@ -43,10 +43,10 @@ export const Navbar = () => {
             className={`menu ${navBarTransparentClass} menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52`}
           >
             <li>
-              <Link to="/shop">Women</Link>
+              <Link to="/shop/women">Women</Link>
             </li>
             <li>
-              <Link to="/shop">Men</Link>
+              <Link to="/shop/men">Men</Link>
             </li>
             <li>
               <Link to="/about">About</Link>

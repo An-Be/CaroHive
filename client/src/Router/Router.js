@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
         element: <Hero />,
       },
       {
-        path: "/shop",
+        path: "/shop/:category",
         element: <Shop />,
       },
       {
