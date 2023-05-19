@@ -5,6 +5,7 @@ import { Cart } from "../components/Cart";
 import Hero from "../components/Hero/Hero";
 import App from "../App";
 import { LoginPage } from "../components/Login/Index";
+import SingleProduct from "../components/Shop/components/singleProduct/SingleProduct";
 
 export const router = createBrowserRouter([
   {
@@ -16,8 +17,12 @@ export const router = createBrowserRouter([
         element: <Hero />,
       },
       {
-        path: "/shop",
+        path: "/shop/:category",
         element: <Shop />,
+      },
+      {
+        path: "/product/:id",
+        element: <SingleProduct />
       },
       {
         path: "/about",

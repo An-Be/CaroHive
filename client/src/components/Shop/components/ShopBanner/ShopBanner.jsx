@@ -7,7 +7,7 @@ const ShopBanner = ({category}) => {
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">
       <h1 className="mb-5 text-5xl font-bold">Shop {category}'s</h1>
-      <p className="mb-5">Revamp your style with the latest trends in {category}'s' clothing.</p>
+      <p className="mb-5">Revamp your style with the latest trends in {category}'s clothing.</p>
     </div>
   </div>
 </div>
