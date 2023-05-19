@@ -1,4 +1,7 @@
 export const selectCartData = (state) => {
-  console.log(state.cart)
     return state.cart;
   };
+
+export const selectAmountOfProduct = (state, id) => {
+  return state.cart.filter((item) => item.id == id);
+}

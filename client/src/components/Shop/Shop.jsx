@@ -13,7 +13,6 @@ export const Shop = () => {
 
   useEffect(() => {
     if (!isLoading) setProducts(data.data)
-    console.log(`triggered`)
   },[isLoading])
 
   const {category} = useParams();

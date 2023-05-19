@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import products from "../../products";
 import coupons from "../../coupons";
 
 const initialState = {
@@ -13,7 +12,7 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    getCardTotal: (state) => {
+    getCartTotal: (state) => {
       const { totalAmount, totalCount } = state.products.reduce(
         (cartTotal, cartItem) => {
           const { price, amount } = cartItem;
@@ -38,13 +37,12 @@ export const cartSlice = createSlice({
     addProduct: (state, action) => {
       const index = state.products.findIndex((product) => product.id === action.payload.productToAddToCart.id);
       if(index >= 0){
-        state.products[index].amount +=1
-        state.totalCount += 1
+        state.products[index].amount = Number(action.payload.productToAddToCart.amount)
+        state.totalCount += Number(action.payload.productToAddToCart.amount)
       }else{
-        const product = {...action.payload.productToAddToCart, amount: 1}
-        console.log(product)
+        const product = {...action.payload.productToAddToCart, amount: Number(action.payload.productToAddToCart.amount)}
         state.products.push(product)
-        state.totalCount += 1
+        state.totalCount += Number(action.payload.productToAddToCart.amount)
       }
     },
     removeProduct: (state, action) => {
@@ -69,7 +67,7 @@ export const cartSlice = createSlice({
 });
 
 export const {
-  getCardTotal,
+  getCartTotal,
   changeAmount,
   removeProduct,
   addProduct,

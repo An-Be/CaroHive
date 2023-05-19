@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCardTotal } from "../../store/slices/cart";
+import { getCartTotal } from "../../store/slices/cart";
 import "./Cart.scss";
 import {
   changeAmount,
@@ -15,10 +15,8 @@ export const Cart = () => {
   const { products, totalAmount } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCardTotal());
+    dispatch(getCartTotal());
   }, [products]);
-
-  //console.log(products.map(product => product[0].url))
 
   const handleAMountChange = (value, id) => {
     dispatch(changeAmount({ value, id }));
@@ -35,7 +33,7 @@ export const Cart = () => {
             {" "}
             <Link
               className="Cart__yourItems__notReady link link-hover"
-              to="/shop"
+              to="/shop/women"
             >
               Not ready to checkout? Continue Shopping
             </Link>
@@ -50,6 +48,7 @@ export const Cart = () => {
                   index={index}
                   title={product.title}
                   price={product.price}
+                  amount={product.amount}
                 />
               ))}
               <button
@@ -61,7 +60,7 @@ export const Cart = () => {
             </div>
           </>
         ) : (
-          <Link className="link link-hover" to="/shop">
+          <Link className="link link-hover" to="/shop/women">
             There is nothing in your cart! Head to our Shop page
           </Link>
         )}

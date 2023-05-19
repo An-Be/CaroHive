@@ -8,14 +8,14 @@ const Product = ({
   image,
   price,
   id,
+  amount,
   handleAMountChange,
   handleProductRemoval,
 }) => {
-  console.log(title)
   return (
     <div className="Product">
       <div className="Product__image">
-        <img src={`${process.env.REACT_APP_IMAGE_URL}${image}`} alt={title} />
+        <img src={image} alt={title} />
       </div>
       <div className="Product__info">
         <span className="font-bold">{title}</span>
@@ -24,8 +24,9 @@ const Product = ({
           id="select-amount"
           className="select select-secondary w-full max-w-xs"
           onChange={(e) => handleAMountChange(e.target.value, id)}
+          value={amount}
         >
-          <option defaultValue>1</option>
+          <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
