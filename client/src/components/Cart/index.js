@@ -12,7 +12,7 @@ import Product from "./components/Product/Product";
 import OrderSummary from "./components/OrderSummary/OrderSummary";
 
 export const Cart = () => {
-  const { products, totalAmount } = useSelector((state) => state.cart);
+  const { products, totalAmountWithoutCoupon } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCartTotal());
@@ -65,7 +65,7 @@ export const Cart = () => {
           </Link>
         )}
       </div>
-      <OrderSummary totalAmount={totalAmount} />
+      <OrderSummary totalAmountWithoutCoupon={totalAmountWithoutCoupon} />
     </div>
   );
 };

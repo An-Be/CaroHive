@@ -3,7 +3,9 @@ import coupons from "../../coupons";
 
 const initialState = {
   products: [],
-  totalAmount: 0,
+  totalAmountWithCoupon: null,
+  totalAmountSavedWithCoupon: null,
+  totalAmountWithoutCoupon: 0,
   totalCount: 0,
   couponUsed: ''
 };
@@ -13,17 +15,17 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     getCartTotal: (state) => {
-      const { totalAmount, totalCount } = state.products.reduce(
+      const { totalAmountWithoutCoupon, totalCount } = state.products.reduce(
         (cartTotal, cartItem) => {
           const { price, amount } = cartItem;
           const itemTotal = price * amount;
-          cartTotal.totalAmount += itemTotal;
+          cartTotal.totalAmountWithoutCoupon += itemTotal;
           cartTotal.totalCount += amount;
           return cartTotal;
         },
-        { totalAmount: 0, totalCount: 0 }
+        { totalAmountWithoutCoupon: 0, totalCount: 0 }
       );
-      state.totalAmount = parseInt(totalAmount.toFixed(2));
+      state.totalAmountWithoutCoupon = parseInt(totalAmountWithoutCoupon.toFixed(2))
       state.totalCount = totalCount;
     },
     changeAmount: (state, action) => {
@@ -39,6 +41,7 @@ export const cartSlice = createSlice({
       if(index >= 0){
         state.products[index].amount = Number(action.payload.productToAddToCart.amount)
         state.totalCount += Number(action.payload.productToAddToCart.amount)
+        
       }else{
         const product = {...action.payload.productToAddToCart, amount: Number(action.payload.productToAddToCart.amount)}
         state.products.push(product)
@@ -58,7 +61,8 @@ export const cartSlice = createSlice({
         Object.keys(coupons).map((coupon) => {
             if (coupon == action.payload.coupon) {
                 state.couponUsed = action.payload.coupon
-              return (state.totalAmount *= coupons[coupon]);
+                state.totalAmountWithCoupon = state.totalAmountWithoutCoupon * coupons[coupon];
+                state.totalAmountSavedWithCoupon = state.totalAmountWithoutCoupon - state.totalAmountWithCoupon
             }
           });
       }  
