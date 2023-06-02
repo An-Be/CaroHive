@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import products from "../../products";
 import coupons from "../../coupons";
 
 const initialState = {
-  products: products,
-  totalAmount: 0,
+  products: [],
+  totalAmountWithCoupon: null,
+  totalAmountSavedWithCoupon: null,
+  totalAmountWithoutCoupon: 0,
   totalCount: 0,
   couponUsed: ''
 };
@@ -13,18 +14,18 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    getCardTotal: (state) => {
-      const { totalAmount, totalCount } = state.products.reduce(
+    getCartTotal: (state) => {
+      const { totalAmountWithoutCoupon, totalCount } = state.products.reduce(
         (cartTotal, cartItem) => {
           const { price, amount } = cartItem;
           const itemTotal = price * amount;
-          cartTotal.totalAmount += itemTotal;
+          cartTotal.totalAmountWithoutCoupon += itemTotal;
           cartTotal.totalCount += amount;
           return cartTotal;
         },
-        { totalAmount: 0, totalCount: 0 }
+        { totalAmountWithoutCoupon: 0, totalCount: 0 }
       );
-      state.totalAmount = parseInt(totalAmount.toFixed(2));
+      state.totalAmountWithoutCoupon = parseInt(totalAmountWithoutCoupon.toFixed(2))
       state.totalCount = totalCount;
     },
     changeAmount: (state, action) => {
@@ -34,6 +35,18 @@ export const cartSlice = createSlice({
         }
         return product;
       });
+    },
+    addProduct: (state, action) => {
+      const index = state.products.findIndex((product) => product.id === action.payload.productToAddToCart.id);
+      if(index >= 0){
+        state.products[index].amount = Number(action.payload.productToAddToCart.amount)
+        state.totalCount += Number(action.payload.productToAddToCart.amount)
+        
+      }else{
+        const product = {...action.payload.productToAddToCart, amount: Number(action.payload.productToAddToCart.amount)}
+        state.products.push(product)
+        state.totalCount += Number(action.payload.productToAddToCart.amount)
+      }
     },
     removeProduct: (state, action) => {
       state.products = state.products.filter((product) => {
@@ -48,7 +61,8 @@ export const cartSlice = createSlice({
         Object.keys(coupons).map((coupon) => {
             if (coupon == action.payload.coupon) {
                 state.couponUsed = action.payload.coupon
-              return (state.totalAmount *= coupons[coupon]);
+                state.totalAmountWithCoupon = state.totalAmountWithoutCoupon * coupons[coupon];
+                state.totalAmountSavedWithCoupon = state.totalAmountWithoutCoupon - state.totalAmountWithCoupon
             }
           });
       }  
@@ -57,9 +71,10 @@ export const cartSlice = createSlice({
 });
 
 export const {
-  getCardTotal,
+  getCartTotal,
   changeAmount,
   removeProduct,
+  addProduct,
   clearCart,
   applyCoupon,
 } = cartSlice.actions;

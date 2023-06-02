@@ -4,9 +4,10 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import './CartCount.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectCartData } from '../../../../store/selectors'
 
 export const CartCount = () => {
-    const { totalCount } = useSelector((state) => state.cart)
+    const {totalCount} = useSelector((state) => selectCartData(state))
   return (
     <motion.div
       whileHover={{ scale: 1.3 }}
