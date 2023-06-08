@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const productsApi = createApi({
-  reducerPath: "productsApi",
+export const caroApi = createApi({
+  reducerPath: "caroApi",
   baseQuery: fetchBaseQuery({
     baseUrl: `${process.env.REACT_APP_API_URL}`,
     prepareHeaders: (headers) => {
@@ -20,4 +20,4 @@ export const productsApi = createApi({
   }),
 });
 
-export const { useGetAllProductsQuery, useGetSingleProductQuery } = productsApi;
+export const { useGetAllProductsQuery, useGetSingleProductQuery } = caroApi;

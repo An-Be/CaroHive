@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import usePostUser from "../hooks/usePostUser";
 
 const Register = ({ setIsUser }) => {
+  const [email, setEmail] = useState(null);
+  const [compareEmail, setCompareEmail] = useState(null);
+  const [password, setPassword] = useState(null)
+
+  const {registerUser} = usePostUser();
+
+  const getUsername = (emailToSplit) => {return emailToSplit.split('@')[0]};
+
+  const postRegisterUser = (e) => {
+    e.preventDefault()
+
+    console.log({email, password, username: getUsername(email)})
+
+    registerUser({ email, password, username: getUsername(email)})
+  }
+
   return (
     <div className="card glass shadow-2xl">
       <div className="card-body">
@@ -12,6 +29,7 @@ const Register = ({ setIsUser }) => {
             type="text"
             placeholder="email"
             className="input input-bordered"
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="form-control">
@@ -22,6 +40,7 @@ const Register = ({ setIsUser }) => {
             type="text"
             placeholder="email"
             className="input input-bordered"
+            onChange={(e) => setCompareEmail(e.target.value)}
           />
         </div>
         <div className="form-control">
@@ -32,6 +51,7 @@ const Register = ({ setIsUser }) => {
             type="text"
             placeholder="password"
             className="input input-bordered"
+            onChange={(e) => setPassword(e.target.value)}
           />
           <label className="label self-center">
             <div className="form-control">
@@ -49,7 +69,7 @@ const Register = ({ setIsUser }) => {
           </button>
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Register</button>
+          <button className="btn btn-primary" onClick={(e) => postRegisterUser(e)}>Register</button>
         </div>
       </div>
     </div>
