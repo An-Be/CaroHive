@@ -5,3 +5,7 @@ export const selectCartData = (state) => {
 export const selectAmountOfProduct = (state, id) => {
   return state.cart.filter((item) => item.id == id);
 }
+
+export const selectUserData = (state) => {
+  return state.user
+}
