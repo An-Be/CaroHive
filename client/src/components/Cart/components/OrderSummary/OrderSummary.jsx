@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCartData } from "../../../../store/selectors";
 import { applyCoupon } from "../../../../store/slices/cart";
+import {loadStripe} from '@stripe/stripe-js';
+import axios from "axios";
 import coupons from "../../../../coupons";
 import "./OrderSummary.scss";
 
-const OrderSummary = ({ totalAmountWithoutCoupon }) => {
+const OrderSummary = ({ totalAmountWithoutCoupon, products }) => {
   const dispatch = useDispatch();
   const { couponUsed, totalAmountWithCoupon } = useSelector((state) => selectCartData(state));
   const [coupon, setCoupon] = useState('');
@@ -34,6 +36,23 @@ const OrderSummary = ({ totalAmountWithoutCoupon }) => {
       setCouponError('Not a valid coupon') 
     }
   }
+  const stripePromise = loadStripe('pk_test_51NGs6GJjVpG2RoQkfJrxIgEJs2AXxSCxhOZs7otTCZevahGnBPXo9N3iaGNbRFnag8zILhXQ9qUuv6DrmeKXuKEB00CoMhlYIH');
+  const handleCheckout = async() => {
+    try{
+      const stripe = await stripePromise;
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/orders`, {products}, {
+        headers: {
+          Authorization: "bearer " + process.env.REACT_APP_API_TOKEN
+        }
+      })
+      await stripe.redirectToCheckout({
+        sessionId:response.data.stripeSession.id,
+      })
+    }catch(error){
+      console.log(error)
+    }
+  }
+
   return (
     <div className="OrderSummary">
       <span className="text-xl font-bold">Order Summary</span>
@@ -74,7 +93,7 @@ const OrderSummary = ({ totalAmountWithoutCoupon }) => {
         </span>
         </div>
       </div>
-      <button className="btn btn-secondary">Continue to checkout</button>
+      <button onClick={handleCheckout} className="btn btn-secondary">Continue to checkout</button>
     </div>
   );
 };

@@ -65,7 +65,7 @@ export const Cart = () => {
           </Link>
         )}
       </div>
-      <OrderSummary totalAmountWithoutCoupon={totalAmountWithoutCoupon} />
+      <OrderSummary products={products} totalAmountWithoutCoupon={totalAmountWithoutCoupon} />
     </div>
   );
 };
