@@ -23,7 +23,7 @@ const SingleProduct = () => {
   },[isLoading])
 
 
-  const [amount, setAmount] = useState(null);
+  const [amount, setAmount] = useState(1);
 
   const dispatch = useDispatch();
   const addToCart = (id, title, price) => {
