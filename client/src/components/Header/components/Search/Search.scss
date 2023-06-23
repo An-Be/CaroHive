@@ -1,0 +1,37 @@
+.Search {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  &:hover {
+    cursor: pointer;
+  }
+  &__iconContainer {
+    &.transparent {
+      color: white;
+    }
+    &__searchIcon {
+      svg {
+        width: 20px;
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    height: 20px;
+    &__closeContainer {
+      &.transparent {
+        color: white;
+      }
+      &__close {
+        width: 30px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

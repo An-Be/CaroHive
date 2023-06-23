@@ -1,0 +1,12 @@
+.Banner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.notTransparent{
+        background-color: black;
+        color: white;
+    }
+    &__header{
+        padding-right: 2px;
+    }
+}
