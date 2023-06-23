@@ -1,20 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCartData } from "../../../../store/selectors";
 import { applyCoupon } from "../../../../store/slices/cart";
+import {loadStripe} from '@stripe/stripe-js';
+import axios from "axios";
 import coupons from "../../../../coupons";
 import "./OrderSummary.scss";
 
-const OrderSummary = ({ totalAmount }) => {
+const OrderSummary = ({ totalAmountWithoutCoupon, products }) => {
   const dispatch = useDispatch();
-  const { couponUsed } = useSelector((state) => selectCartData(state));
+  const { couponUsed, totalAmountWithCoupon } = useSelector((state) => selectCartData(state));
   const [coupon, setCoupon] = useState('');
   const [couponError, setCouponError] = useState(null);
+  const [couponSuccess, setCouponSucess] = useState(false);
+
+  const isCouponApplied = totalAmountWithCoupon ? {textDecoration : 'line-through', color: 'red'} : null;
+
+  useEffect(() => {
+    couponUsed.length > 0 ? setCouponSucess(true) : setCouponSucess(false)
+  }, [])
 
   const handleCouponEntered = () => {
     if (coupons[coupon] && couponUsed.length < 1 ){
       setCouponError(null)
       dispatch(applyCoupon({coupon}))
+      setCouponSucess(true)
     }
     else if(coupons[coupon] && couponUsed == coupon){
       setCouponError('You have already used that coupon') 
@@ -26,6 +36,23 @@ const OrderSummary = ({ totalAmount }) => {
       setCouponError('Not a valid coupon') 
     }
   }
+  const stripePromise = loadStripe('pk_test_51NGs6GJjVpG2RoQkfJrxIgEJs2AXxSCxhOZs7otTCZevahGnBPXo9N3iaGNbRFnag8zILhXQ9qUuv6DrmeKXuKEB00CoMhlYIH');
+  const handleCheckout = async() => {
+    try{
+      const stripe = await stripePromise;
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/orders`, {products}, {
+        headers: {
+          Authorization: "bearer " + process.env.REACT_APP_API_TOKEN
+        }
+      })
+      await stripe.redirectToCheckout({
+        sessionId:response.data.stripeSession.id,
+      })
+    }catch(error){
+      console.log(error)
+    }
+  }
+
   return (
     <div className="OrderSummary">
       <span className="text-xl font-bold">Order Summary</span>
@@ -40,13 +67,16 @@ const OrderSummary = ({ totalAmount }) => {
           <button className="btn btn-square" onClick={handleCouponEntered}>Add
           </button>
         </div>
-        <span className="OrderSummary__error">{couponError}</span>
+        <span className="OrderSummary__error">{couponError || couponSuccess}</span>
       </div>
       <div className="OrderSummary__subtotal">
         <span className="Cart__orderSummary__subtotal__title">Subtotal</span>
-        <span className="Cart__orderSummary__subtotal__amount">
-          ${totalAmount}
+        <div>
+        {couponSuccess ? <span className='pr-2'>${totalAmountWithCoupon}</span> : null}
+        <span className="Cart__orderSummary__subtotal__amount" style = {isCouponApplied}>
+          ${totalAmountWithoutCoupon}
         </span>
+        </div>
       </div>
       <div className="OrderSummary__shipping">
         <span className="Cart__orderSummary__shipping__title">Shipping</span>
@@ -56,11 +86,14 @@ const OrderSummary = ({ totalAmount }) => {
       </div>
       <div className="OrderSummary__total">
         <span className="Cart__orderSummary__total__title">Total</span>
-        <span className="Cart__orderSummary__total__amount">
-          ${totalAmount}
+        <div>
+        {couponSuccess ? <span className='pr-2'>${totalAmountWithCoupon}</span> : null}
+        <span className="Cart__orderSummary__total__amount" style = {isCouponApplied}>
+          ${totalAmountWithoutCoupon}
         </span>
+        </div>
       </div>
-      <button className="btn btn-secondary">Continue to checkout</button>
+      <button onClick={handleCheckout} className="btn btn-secondary">Continue to checkout</button>
     </div>
   );
 };

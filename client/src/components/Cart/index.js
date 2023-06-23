@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCardTotal } from "../../store/slices/cart";
+import { getCartTotal } from "../../store/slices/cart";
 import "./Cart.scss";
 import {
   changeAmount,
@@ -12,10 +12,10 @@ import Product from "./components/Product/Product";
 import OrderSummary from "./components/OrderSummary/OrderSummary";
 
 export const Cart = () => {
-  const { products, totalAmount } = useSelector((state) => state.cart);
+  const { products, totalAmountWithoutCoupon } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCardTotal());
+    dispatch(getCartTotal());
   }, [products]);
 
   const handleAMountChange = (value, id) => {
@@ -33,7 +33,7 @@ export const Cart = () => {
             {" "}
             <Link
               className="Cart__yourItems__notReady link link-hover"
-              to="/shop"
+              to="/shop/women"
             >
               Not ready to checkout? Continue Shopping
             </Link>
@@ -42,12 +42,13 @@ export const Cart = () => {
                 <Product
                   key={index}
                   id={product.id}
-                  image={product.img}
+                  image={product.url}
                   handleProductRemoval={handleProductRemoval}
                   handleAMountChange={handleAMountChange}
                   index={index}
                   title={product.title}
                   price={product.price}
+                  amount={product.amount}
                 />
               ))}
               <button
@@ -59,12 +60,12 @@ export const Cart = () => {
             </div>
           </>
         ) : (
-          <Link className="link link-hover" to="/shop">
+          <Link className="link link-hover" to="/shop/women">
             There is nothing in your cart! Head to our Shop page
           </Link>
         )}
       </div>
-      <OrderSummary totalAmount={totalAmount} />
+      <OrderSummary products={products} totalAmountWithoutCoupon={totalAmountWithoutCoupon} />
     </div>
   );
 };
