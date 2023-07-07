@@ -1,8 +1,8 @@
-# Caro Hive Front End
+# 🚀 Caro Hive Front End
 
 [Caro Hive Backend](https://github.com/An-Be/CaroHive-backend)
 
-## `Technologies`
+## 🤖 `Technologies`
 - React
   - react router dom 
 - Redux Toolkit
@@ -13,14 +13,14 @@
 - Daisy UI
 - Sass
 - 
-## `Get set up`
+## ⚙️ `Get set up`
 - Make sure you are in correct directory
 - ```npm install```
 - add a ```.env```
   - ```.env``` will need environment variables from Strapi
 - run ```npm start`` to get app running on ```localhost:3000```
 
-## `Features`
+## 🔥 `Features`
 - Landing page with Heros
 - About us Page
 - Login/Registration - authentication done through Strapi
@@ -31,7 +31,7 @@
   - user slice
   - api - holding RTK query code to fetch data from Strapi
  
-## `Additional features to work on`
+## 👩‍💻 `Additional features to work on`
 - Filtering on Shop page
 - User profile
   - To include User information
