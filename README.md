@@ -1,6 +1,8 @@
 # 🚀 Caro Hive Front End
+<img width="1728" alt="caro-hive" src="https://github.com/An-Be/CaroHive-frontend/assets/77519894/0073529d-d6c8-4a57-beb2-126d95438da0">
 
-[Caro Hive Backend](https://github.com/An-Be/CaroHive-backend)
+
+[Checkout Caro Hive <strong>Backend</strong> repo](https://github.com/An-Be/CaroHive-backend)
 
 ## 🤖 `Technologies`
 - React
