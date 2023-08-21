@@ -1,6 +1,8 @@
 # 🚀 Caro Hive Front End
 <img width="1728" alt="caro-hive" src="https://github.com/An-Be/CaroHive-frontend/assets/77519894/0073529d-d6c8-4a57-beb2-126d95438da0">
 
+![Screen Shot 2023-08-21 at 11 04 32 AM](https://github.com/An-Be/CaroHive-frontend/assets/77519894/ea873de7-5c2f-4278-ba20-472eab0663cf)
+
 
 [Checkout Caro Hive <strong>Backend</strong> repo](https://github.com/An-Be/CaroHive-backend)
 
